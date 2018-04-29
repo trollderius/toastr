@@ -53,7 +53,10 @@ class Toastr {
         foreach($notifications as $notification) {
 
             $config = $this->config->get('toastr::options');
-           
+            if(empty($config)){
+                $config = [];
+            }
+            
             if(count($notification['options']) > 0) {
                 // Merge user supplied options with default options
                 $config = array_merge($config, $notification['options']);
